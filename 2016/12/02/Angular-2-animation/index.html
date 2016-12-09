@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Angular 2 animation | Exploring, Discovering and Solving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="The animation of Angular 2 is built on top of its component and is meta driven. In another word, instead of using certain API to implement the animation in the code, Angular 2 requires you to declare">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular 2 animation">
+<meta property="og:url" content="http://lawli.github.com/learning/2016/12/02/Angular-2-animation/index.html">
+<meta property="og:site_name" content="Exploring, Discovering and Solving">
+<meta property="og:description" content="The animation of Angular 2 is built on top of its component and is meta driven. In another word, instead of using certain API to implement the animation in the code, Angular 2 requires you to declare">
+<meta property="og:updated_time" content="2016-12-06T21:55:37.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular 2 animation">
+<meta name="twitter:description" content="The animation of Angular 2 is built on top of its component and is meta driven. In another word, instead of using certain API to implement the animation in the code, Angular 2 requires you to declare">
+  
+    <link rel="alternate" href="/atom.xml" title="Exploring, Discovering and Solving" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Exploring, Discovering and Solving</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">learning is a life time enjoyment</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lawli.github.com/learning"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Angular-2-animation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/02/Angular-2-animation/" class="article-date">
+  <time datetime="2016-12-02T19:53:23.000Z" itemprop="datePublished">2016-12-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Front-End-Angular-2/">Front End - Angular 2</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Angular 2 animation
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The animation of Angular 2 is built on top of its component and is meta driven. In another word, instead of using certain API to implement the animation in the code, Angular 2 requires you to declare the animation in the component’s meta data.</p>
+<p>Here is a simple example<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;style, animate, transition, state, trigger&#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line">@component(&#123;</div><div class="line">    <span class="attr">selector</span>: <span class="string">'mypane'</span>,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;div [@showState]="show"&gt;This is a test view&lt;/div&gt;'</span>,</div><div class="line">    <span class="attr">animations</span>: [</div><div class="line">      trigger(<span class="string">'showState'</span>, [</div><div class="line">        state(<span class="string">'on'</span>, style(&#123;<span class="attr">opacity</span>: <span class="number">1</span>&#125;)),</div><div class="line">        state(<span class="string">'off'</span>, style(&#123;<span class="attr">opacity</span>: <span class="number">0</span>&#125;)),</div><div class="line">        transition(<span class="string">'on =&gt; off'</span>, [animate(<span class="string">'0.2s ease-out'</span>)]),</div><div class="line">        transition(<span class="string">'off =&gt; on'</span>, [</div><div class="line">          style(&#123;<span class="attr">transform</span>: scale(<span class="number">0.5</span>)&#125;),</div><div class="line">          animate(<span class="string">'0.2s ease-in'</span>, style(&#123;<span class="attr">transform</span>:scale(<span class="number">1</span>)&#125;))</div><div class="line">        ])</div><div class="line">      ])</div><div class="line">    ]</div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">MyPane</span> </span>&#123;</div><div class="line">  show: string;</div><div class="line"></div><div class="line">  turnOn() &#123;</div><div class="line">    <span class="keyword">this</span>.show = <span class="string">"on"</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  turnOff() &#123;</div><div class="line">    <span class="keyword">this</span>.show = <span class="string">"off"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Let’s discuss this sample step by step</p>
+<ol>
+<li><p>We need to define an animation entry.<br>An animation entry or animation trigger must be defined for an element to indicate which element should have the animation effect. Here the <strong>‘@showState’</strong> is defined for the ‘div’.</p>
+</li>
+<li><p>We create a ‘animations’ entry in the component meta data.<br>The ‘animations’ contains a series of ‘triggers’, e.g <strong>trigger(‘showState’)</strong> in the above example, each of which corresponds to an animation entry. Please be noted, we need to remove the leading ‘@’ from the entry name when put it in the ‘trigger’.</p>
+</li>
+<li><p>Each animation entry can have multiple states and optionally we can define css style for each state.<br>Here we define styles for state ‘on’ and ‘off’</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">state(<span class="string">'on'</span>, style(&#123;opacity: <span class="number">1</span>&#125;)),</div><div class="line">state(<span class="string">'off'</span>, style(&#123;opacity: <span class="number">0</span>&#125;)),</div></pre></td></tr></table></figure>
+</li>
+<li><p>We need to define the animation effect when an animation entry changes from one state to another. The syntax is <strong>transition(‘state change expression’, [step1, step2,…,stepN])</strong>.<br>The ‘state change expression’ describes how the states change, for example ‘on =&gt; off’ means changing state from ‘on’ to ‘off’, ‘off =&gt; on’ means changing state from ‘off’ to ‘on’ and ‘on &lt;=&gt; off’ means a bidirectional change.<br>The [steps] is the most important part for the animation implementation. It lists all the actions the animation effect will involve. The legitimate actions are ‘style’ and ‘animate’. The ‘style’ action can only be used as the first one, indicating the initial style of the animation. We will focus on the ‘animate’ action. The ‘animate’ accepts two arguments, the first of which is a string with format ‘duration delay ease-function’. The duration and delay both use time unit like ‘0.5s’ or ‘200ms’. The ease function tells how the animation frames change along the time line. The most popular ones are ‘ease-in’ and ‘ease-out’ and you can find more from <a href="http://easings.net/" target="_blank" rel="external">here</a>. The second argument is an optional ‘style’ to tell what is the final style when the animation ends. If it is missing, the style defined by the ‘state’ will be used.<br><strong>Please be noted: All the styles defined in the ‘transition’ are not permanent and will disappear after the animation complete.</strong></p>
+</li>
+</ol>
+<p>Let’s go through the above example to see how the ‘transition’ works.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">state(<span class="string">'on'</span>, style(&#123;<span class="attr">opacity</span>: <span class="number">1</span>&#125;)),</div><div class="line">state(<span class="string">'off'</span>, style(&#123;<span class="attr">opacity</span>: <span class="number">0</span>&#125;)),</div><div class="line">transition(<span class="string">'on =&gt; off'</span>, [animate(<span class="string">'0.2s ease-out'</span>)]),</div></pre></td></tr></table></figure></p>
+<p>The code above means when the state changes from ‘on’ to ‘off’, an animation will start without delay and last for 0.2 second, playing with ‘ease-out’ function. Because we defined the style for state ‘on’ as ‘opacity: 1’ and style for state ‘off’ as ‘opacity: 0’. The animation implements a fade-out effect.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">transition(<span class="string">'off =&gt; on'</span>, [</div><div class="line">  style(&#123;<span class="attr">transform</span>: scale(<span class="number">0.5</span>)&#125;),</div><div class="line">  animate(<span class="string">'0.2s ease-in'</span>, style(&#123;<span class="attr">transform</span>:scale(<span class="number">1</span>)&#125;))</div><div class="line">])</div></pre></td></tr></table></figure>
+<p>The code above means when the state changes from ‘off’ to ‘on’, an animation will start without delay and last for 0.2 second, playing with ‘ease-in’ function. In addition, we specify the scale factor 0.5 at the beginning and scale factor 1 at the end. The animation implements a fade-in and scaling effect and the ‘scale’ style will be removed after the animation is finished.</p>
+<p>Sometimes we want to have some animation effects when navigating pages by the router. When navigating from page A to page B, the page A is destroyed and the page B is initiated. The trick is how to define the animation entry and states changes. Angular 2 provides two special states, “*“ and “void”. “*“ stands for any state and “void” stands for none state. Therefore, the destroying process of page A can be described as “* =&gt; void” and the initiating process of page B can be described as “void =&gt; *“.</p>
+<p>Additionally, we also don’t need to bind the animation entry with a variable but just assign it with any arbitrary value.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> [@<span class="attr">showState</span>]=<span class="string">"true"</span>&gt;</span>This is a test view<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Or even simpler, we can just define the animation entry in the meta but not the template view.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@component(&#123;</div><div class="line">    <span class="attr">selector</span>: <span class="string">'mypane'</span>,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;div&gt;This is a test view&lt;/div&gt;'</span>,</div><div class="line">    <span class="attr">host</span>: &#123; <span class="string">'[@showState]'</span>: <span class="string">'true'</span> &#125;,</div><div class="line">    <span class="attr">animations</span>: [...]</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>We define the animation entry in the ‘host’ which is the wrapper parent element automatically created by the Angular 2.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lawli.github.com/learning/2016/12/02/Angular-2-animation/" data-id="ciwiaqba40000mjwn5y7g0j7p" class="article-share-link">Share</a>
+      
+        <a href="http://lawli.github.com/learning/2016/12/02/Angular-2-animation/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular-2/">Angular 2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typescript/">Typescript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/animation/">animation</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/06/Angular-2-http/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Angular 2 http
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End-Angular-2/">Front End - Angular 2</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular-2/">Angular 2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/">Typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/animation/">animation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Angular-2/" style="font-size: 20px;">Angular 2</a> <a href="/tags/Typescript/" style="font-size: 20px;">Typescript</a> <a href="/tags/animation/" style="font-size: 10px;">animation</a> <a href="/tags/http/" style="font-size: 10px;">http</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/06/Angular-2-http/">Angular 2 http</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/02/Angular-2-animation/">Angular 2 animation</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Lawrence Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'lawli-github-io-learning';
+  
+  var disqus_url = 'http://lawli.github.com/learning/2016/12/02/Angular-2-animation/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
